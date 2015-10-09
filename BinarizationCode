@@ -1,0 +1,17 @@
+clc;close all;
+
+%Local Function Definitions:
+fun = @(block_struct) thresher(block_struct.data);
+
+imFolder = 'G:\image processing\Text Extracted Folder\New folder\old train data';
+D = dir([imFolder, '\*.jpg']);
+
+
+for A = 1:numel(D)
+    im = imread([imFolder,'\',D(A).name]);
+    im = blockproc(im,[32,32],fun);
+    im = bwareaopen(im,3);
+   
+  
+    imwrite(im,[imFolder,'\',D(A).name]);
+end
