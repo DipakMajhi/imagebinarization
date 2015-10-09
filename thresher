@@ -1,0 +1,8 @@
+
+function [ out ] = thresher(in)
+
+thresh = graythresh(in);
+out = im2bw(in,thresh);
+imshow(out);
+
+end 
